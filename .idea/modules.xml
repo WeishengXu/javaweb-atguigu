@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/javaweb-atguigu.iml" filepath="$PROJECT_DIR$/.idea/javaweb-atguigu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pro08/pro08.iml" filepath="$PROJECT_DIR$/pro08/pro08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pro09/pro09.iml" filepath="$PROJECT_DIR$/pro09/pro09.iml" />
+    </modules>
+  </component>
+</project>
