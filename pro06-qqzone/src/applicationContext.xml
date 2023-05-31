@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean*)>
+        <!ELEMENT bean (property*)>
+        <!ELEMENT property (#PCDATA)>
+
+        <!ATTLIST bean id ID #REQUIRED>
+        <!ATTLIST bean class CDATA #IMPLIED>
+        <!ATTLIST property name CDATA #IMPLIED>
+        <!ATTLIST property ref IDREF #IMPLIED>
+        ]>
+
+<beans>
+    <bean id="userBasicDao" class="com.atguigu.qqzone.dao.impl.UserBasicDaoImpl"/>
+    <bean id="topicDao" class="com.atguigu.qqzone.dao.impl.TopicDaoImpl"/>
+    <bean id="replyDap" class="com.atguigu.qqzone.dao.impl.ReplyDaoImpl"/>
+    <bean id="hostReplyDao" class="com.atguigu.qqzone.dao.impl.HostReplyDaoImpl"/>
+
+    <bean id="userBasicService" class="com.atguigu.qqzone.service.impl.UserBasicServiceImpl">
+        <property name="userBasicDao" ref="userBasicDao"/>
+    </bean>
+    <bean id="topicService" class="com.atguigu.qqzone.service.impl.TopicServiceImpl">
+        <property name="topicDao" ref="topicDao"/>
+        <property name="userBasicService" ref="userBasicService"/>
+        <property name="replyService" ref="replyService"/>
+    </bean>
+    <bean id="replyService" class="com.atguigu.qqzone.service.impl.ReplyServiceImpl">
+        <property name="replyDao" ref="replyDap"/>
+        <property name="userBasicService" ref="userBasicService"/>
+        <property name="hostReplyService" ref="hostReplyService"/>
+    </bean>
+    <bean id="hostReplyService" class="com.atguigu.qqzone.service.impl.HostReplyServiceImpl">
+        <property name="hostReplyDao" ref="hostReplyDao"/>
+    </bean>
+
+    <bean id="user" class="com.atguigu.qqzone.controller.UserBasicController">
+        <property name="userBasicService" ref="userBasicService"/>
+        <property name="topicService" ref="topicService"/>
+    </bean>
+    <bean id="page" class="com.atguigu.qqzone.controller.PageController"/>
+    <bean id="topic" class="com.atguigu.qqzone.controller.TopicController">
+        <property name="topicService" ref="topicService"/>
+    </bean>
+    <bean id="reply" class="com.atguigu.qqzone.controller.ReplyController">
+        <property name="replyService" ref="replyService"/>
+    </bean>
+
+</beans>

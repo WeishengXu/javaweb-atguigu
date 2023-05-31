@@ -1,0 +1,36 @@
+body {
+    background-color: #E8E8FF;
+}
+
+#div_topic_list {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 16px;
+}
+
+#div_to_add {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#div_add_topic {
+    width: 60%;
+    margin-left: 20%;
+    padding-bottom: 32px;
+}
+
+#div_add_topic input[type=text] {
+    width: 98%;
+    border: 0px dotted gray;
+}
+
+#div_add_topic textarea {
+    width: 98%;
+}
+
+.add_topic_title {
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+    border-bottom: 1px solid lightgray;
+}

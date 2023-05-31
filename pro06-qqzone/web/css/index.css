@@ -1,0 +1,28 @@
+#div0{
+    width:80%;
+    margin-left:10%;
+}
+#div_top{
+    width:100%;
+    border: 0px;
+}
+#div_left{
+    width:20%;
+    border: 0px;
+    overflow: auto;
+}
+#div_main{
+    width:80%;
+    border: 0px;
+}
+#div_bottom{
+    background-color: #FFCCCC;
+    width:80%;
+    margin-left:20%;
+    border:0px solid blue;
+}
+iframe{
+    width:100%;
+    float:left;
+    border:0px solid red;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script language="JavaScript" th:src="@{/js/main.js}"></script>
+</head>
+<body>
+<div id="div_topic_list">
+    <div id="div_to_add" th:if="${session.userBasic.id == session.friend.id}">
+        <input type="button" class="right8" value="发表新日志" onclick="checkNewTopicDisplay('div_add_topic')"/>
+    </div>
+    <table id="tbl_topic_list">
+        <tr>
+            <th>ID</th>
+            <th>标题</th>
+            <th>日期</th>
+            <th>操作</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(session.friend.topicList)}">
+            <td colspan="4">暂无日志列表</td>
+        </tr>
+        <tr th:unless="${#lists.isEmpty(session.friend.topicList)}" th:each="topic: ${session.friend.topicList}">
+            <td th:text="${topic.id}">2</td>
+            <td class="left">
+                <a th:href="@{/topic.do(operate='topicDetail', id=${topic.id})}"
+                   th:text="${topic.title}">我是大波妞神</a>
+            </td>
+            <td th:text="${#dates.format(topic.topicDate, 'yyyy-MM-dd HH:mm:ss')}">2021-09-01 12:30:55</td>
+            <td>
+                <input type="button" value="删除" th:if="${session.userBasic.id == session.friend.id}"
+                       th:onclick="|delTopic(${topic.id})|"/>
+                <input type="button" value="收藏" th:if="${session.userBasic.id != session.friend.id}"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="div_add_topic" style="display: none">
+    <p class="add_topic_title">发表新日志</p>
+    <form th:action="@{/topic.do}" method="post">
+        <input type="hidden" name="operate" value="addTopic"/>
+        <table>
+            <tr>
+                <th>日志标题：</th>
+                <td><textarea rows="1" name="title"/></textarea></td>
+            </tr>
+            <tr>
+                <th>日志内容：</th>
+                <td><textarea rows="3" name="content"></textarea></td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="submit" value=" 提 交 " onclick="checkNewTopicDisplay('div_add_topic')"/>
+                    <input type="reset" value=" 重 置 "/>
+                </th>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
